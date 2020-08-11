@@ -1,0 +1,18 @@
+<!-- app/views/tasks/index.html.erb -->
+<div><h1> My tasks </h1></div>
+
+<div>
+  <ul>
+    <% @tasks.each do |task|%>
+      <% if (task.completed == true) %>
+        <li> ✅ <%= link_to task.title, task_path(task) %> <%= link_to "🗑", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %> </li>
+      <% else %>
+        <li> ❗️ <%= link_to task.title, task_path(task) %><%= link_to "🗑", task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<p> ➕ <%= link_to "Add a new task", tasks_new_path %></p>
+
+
